@@ -1,0 +1,44 @@
+plugins {
+    id 'java'
+    id 'checkstyle'
+}
+
+checkstyle {
+    maxWarnings = 0 // 규칙이 어긋나는 코드가 하나라도 있을 경우 빌드 fail
+    configFile = file("${rootDir}/config/checkstyle.xml") // 설정 파일 경로 지정
+}
+
+
+
+group 'camp.nextstep.edu'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    maven { url 'https://jitpack.io' }
+}
+dependencies {
+    implementation 'com.github.woowacourse-projects:mission-utils:1.0.0'
+    implementation('org.jgrapht:jgrapht-core:1.4.0')
+    testImplementation('org.junit.jupiter:junit-jupiter:5.7.0')
+    testImplementation('org.assertj:assertj-core:3.18.1')
+    testImplementation('org.mockito:mockito-inline:3.6.0')
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(11)
+    }
+}
+test {
+    useJUnitPlatform()
+}
+task checkstyle(type: Test) {
+    group 'verification'
+    description 'Runs the unit tests with coverage'
+
+    dependsOn(':test',
+            ':checkstyleMain')
+
+    tasks['checkstyleMain'].mustRunAfter(tasks['test'])
+}
