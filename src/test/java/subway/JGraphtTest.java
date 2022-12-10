@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class JGraphtTest {
     @Test
     public void getDijkstraShortestPath() {
-        WeightedMultigraph<String, DefaultWeightedEdge> graph = new WeightedMultigraph(DefaultWeightedEdge.class);
+        WeightedMultigraph<String, DefaultWeightedEdge> graph = new WeightedMultigraph<>(DefaultWeightedEdge.class);
         graph.addVertex("v1");
         graph.addVertex("v2");
         graph.addVertex("v3");

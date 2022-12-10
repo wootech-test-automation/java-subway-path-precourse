@@ -1,5 +1,7 @@
 package subway.service;
 
+import java.util.List;
+import java.util.stream.Collectors;
 import subway.domain.Station;
 import subway.domain.StationRepository;
 import subway.domain.enums.StationStatus;
@@ -14,5 +16,11 @@ public class StationService {
         StationRepository.addStation(new Station(StationStatus.YANGJE));
         StationRepository.addStation(new Station(StationStatus.MAEBONG));
         StationRepository.addStation(new Station(StationStatus.YANGJE_FOREST));
+    }
+
+    public List<Station> findStations(final List<String> inputSubwayStations) {
+        return inputSubwayStations.stream()
+                .map(StationRepository::findStation)
+                .collect(Collectors.toList());
     }
 }

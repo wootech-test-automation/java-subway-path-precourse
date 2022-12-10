@@ -8,11 +8,20 @@ import static subway.domain.enums.StationStatus.YANGJE;
 import static subway.domain.enums.StationStatus.YANGJE_FOREST;
 import static subway.domain.enums.StationStatus.YEOKSAM;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import org.jgrapht.GraphPath;
+import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.WeightedMultigraph;
+import subway.domain.Station;
 
 public class ShortestDistancePath {
-    private final static WeightedMultigraph<String, DefaultWeightedEdge> shortestDistances = new WeightedMultigraph<>(
+    private static final int START = 0;
+    private static final int END = 1;
+
+    private static final WeightedMultigraph<String, DefaultWeightedEdge> shortestDistances = new WeightedMultigraph<>(
             DefaultWeightedEdge.class);
 
     public static void initializePath() {
@@ -41,5 +50,29 @@ public class ShortestDistancePath {
         shortestDistances.addVertex(YANGJE.getName());
         shortestDistances.addVertex(MAEBONG.getName());
         shortestDistances.addVertex(YANGJE_FOREST.getName());
+    }
+
+    public static List<Object> createResultList(final List<Station> stations) {
+        List<Object> results = new ArrayList<>();
+        results.add(calculateShortestDistance(stations.get(START), stations.get(END)));
+        results.add(calculateTime(createVertexList(stations.get(START), stations.get(END))));
+        results.add(createVertexList(stations.get(START), stations.get(END)));
+        return results;
+    }
+
+    private static int calculateTime(final List vertexes) {
+        return MinimumTimePath.calculateTimeByEdges(vertexes);
+    }
+
+    private static List createVertexList(final Station startStation, final Station endStation) {
+        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(shortestDistances);
+        GraphPath path = dijkstraShortestPath.getPath(startStation.getName(), endStation.getName());
+        return path.getVertexList();
+    }
+
+    private static int calculateShortestDistance(final Station startStation, final Station endStation) {
+        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(shortestDistances);
+        GraphPath path = dijkstraShortestPath.getPath(startStation.getName(), endStation.getName());
+        return (int) path.getWeight();
     }
 }

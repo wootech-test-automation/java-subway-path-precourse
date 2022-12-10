@@ -1,5 +1,6 @@
 package subway.controller;
 
+import java.util.List;
 import subway.service.LineService;
 import subway.service.StationService;
 import subway.service.SubwayPathService;
@@ -56,12 +57,11 @@ public class SubwayPathController {
     }
 
     private void requestShortestPath() {
-        subwayPathService.createShortestPathResult(inputView.inputSubwayStation());
+        List<Object> shortestPathResult = subwayPathService.createShortestPathResult(inputView.inputSubwayStation());
+        outputView.printResults(shortestPathResult);
     }
 
     private void initializeSubwayPath() {
-        ShortestDistancePath.initializePath();
-        MinimumTimePath.initializePath();
         subwayPathService.initializeSubwayPath();
     }
 }

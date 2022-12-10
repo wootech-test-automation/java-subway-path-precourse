@@ -34,6 +34,7 @@ public class InputVIew {
 
     public List<String> inputSubwayStation() {
         List<String> userInputs = new ArrayList<>();
+        System.out.println();
         System.out.println(InputMessage.START_STATION_INPUT_MESSAGE);
         userInputs.add(readLine());
         System.out.println();

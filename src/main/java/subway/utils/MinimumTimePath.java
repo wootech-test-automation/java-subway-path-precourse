@@ -8,6 +8,7 @@ import static subway.domain.enums.StationStatus.YANGJE;
 import static subway.domain.enums.StationStatus.YANGJE_FOREST;
 import static subway.domain.enums.StationStatus.YEOKSAM;
 
+import java.util.List;
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.WeightedMultigraph;
 
@@ -44,5 +45,13 @@ public class MinimumTimePath {
         shortestTimes.addVertex(YANGJE.getName());
         shortestTimes.addVertex(MAEBONG.getName());
         shortestTimes.addVertex(YANGJE_FOREST.getName());
+    }
+
+    public static int calculateTimeByEdges(final List<String> vertexes) {
+        int timeSum = 0;
+        for (int index = 0; index < vertexes.size() - 1; index++) {
+            timeSum += shortestTimes.getEdgeWeight(shortestTimes.getEdge(vertexes.get(index), vertexes.get(index + 1)));
+        }
+        return timeSum;
     }
 }

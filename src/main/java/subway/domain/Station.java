@@ -16,6 +16,9 @@ public class Station {
         return station;
     }
 
+    public boolean contains(final String stationName) {
+        return station.getName().equals(stationName);
+    }
 
     // 추가 기능 구현
 }
