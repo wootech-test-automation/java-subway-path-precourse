@@ -9,6 +9,7 @@ public class DistanceRepository {
             DefaultWeightedEdge.class);
 
     public DistanceRepository() {
+
     }
 
 

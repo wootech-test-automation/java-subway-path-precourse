@@ -19,6 +19,7 @@ public class InitialSettingController {
         initializeStations();
         initializeLines();
         connectStationsWithLines();
+        connectLinesWithStations();
     }
 
     private static void initializeStations() {
@@ -48,5 +49,20 @@ public class InitialSettingController {
         stationsAndLines.put("매봉역", List.of("3호선"));
         stationsAndLines.put("양재시민의숲역", List.of("신분당선"));
         return stationsAndLines;
+    }
+
+    private static void connectLinesWithStations() {
+        Map<String, List<String>> linesAndStations = setLinesAndStationsMap();
+        linesAndStations.keySet().stream()
+                .map(LineRepository::findLineByName)
+                .forEach(line -> line.addStations(linesAndStations.get(line.getName())));
+    }
+
+    private static Map<String, List<String>> setLinesAndStationsMap() {
+        Map<String, List<String>> linesAndStations = new HashMap<>();
+        linesAndStations.put("2호선", List.of("교대역", "강남역", "역삼역"));
+        linesAndStations.put("3호선", List.of("교대역 ", "남부터미널역", "양재역", "매봉역"));
+        linesAndStations.put("신분당선", List.of("강남역", "양재역", "양재시민의숲역"));
+        return linesAndStations;
     }
 }
