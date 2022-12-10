@@ -1,18 +1,34 @@
 package subway.domain.type;
 
+import java.util.Objects;
+
 public class Line {
     private final String name;
     private final Station source;
     private final Station target;
-    private final int distance;
-    private final int time;
 
-    public Line(String name, Station source, Station target, int distance, int time) {
+    public Line(String name, Station source, Station target) {
         this.name = name;
         this.source = source;
         this.target = target;
-        this.distance = distance;
-        this.time = time;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Line line = (Line) o;
+        return Objects.equals(name, line.name) && Objects.equals(source, line.source)
+                && Objects.equals(target, line.target);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, source, target);
     }
 
     public String getName() {
@@ -25,13 +41,5 @@ public class Line {
 
     public Station getTarget() {
         return target;
-    }
-
-    public int getDistance() {
-        return distance;
-    }
-
-    public int getTime() {
-        return time;
     }
 }
