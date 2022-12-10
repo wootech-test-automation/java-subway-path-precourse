@@ -2,8 +2,8 @@ package subway.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import subway.domain.type.Station;
-import subway.view.keyword.MainFeatureKeyword;
-import subway.view.keyword.PathFeatureKeyword;
+import subway.launcher.keyword.MainFeatureKeyword;
+import subway.launcher.keyword.PathFeatureKeyword;
 
 public class InputView extends View {
     private static final String REQUEST_MAIN_FEATURE = "## 메인 화면\n"

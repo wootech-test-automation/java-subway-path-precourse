@@ -3,7 +3,7 @@ package subway.launcher.status;
 import subway.domain.type.PathResult;
 import subway.domain.type.Station;
 import subway.launcher.SubwayLauncher;
-import subway.view.keyword.PathFeatureKeyword;
+import subway.launcher.keyword.PathFeatureKeyword;
 
 public class InputStationStatus extends AbstractRunnableSubwayStatus {
 

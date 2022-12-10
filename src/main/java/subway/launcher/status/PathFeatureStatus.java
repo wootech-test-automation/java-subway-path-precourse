@@ -1,7 +1,7 @@
 package subway.launcher.status;
 
 import subway.launcher.SubwayLauncher;
-import subway.view.keyword.PathFeatureKeyword;
+import subway.launcher.keyword.PathFeatureKeyword;
 
 public class PathFeatureStatus extends AbstractRunnableSubwayStatus {
 

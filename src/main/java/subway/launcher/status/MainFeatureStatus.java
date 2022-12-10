@@ -1,7 +1,7 @@
 package subway.launcher.status;
 
 import subway.launcher.SubwayLauncher;
-import subway.view.keyword.MainFeatureKeyword;
+import subway.launcher.keyword.MainFeatureKeyword;
 
 public class MainFeatureStatus extends AbstractRunnableSubwayStatus {
 

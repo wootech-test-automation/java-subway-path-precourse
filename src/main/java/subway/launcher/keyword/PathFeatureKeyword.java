@@ -1,4 +1,4 @@
-package subway.view.keyword;
+package subway.launcher.keyword;
 
 import java.util.Arrays;
 
