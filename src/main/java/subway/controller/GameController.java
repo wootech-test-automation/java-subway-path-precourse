@@ -14,8 +14,12 @@ public class GameController {
     }
 
     public void play() {
+
+        InitialSettingController initialSettingController = new InitialSettingController();
+
         outputView.printMainScreen();
         MainOption mainOption = inputView.readMainOption();
         System.out.println(mainOption);
+
     }
 }

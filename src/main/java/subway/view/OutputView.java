@@ -22,6 +22,7 @@ public class OutputView {
 
     public void printMainScreen() {
         System.out.println(ConsoleMessage.OUTPUT_MAIN_SCREEN.message);
+        System.out.println();
     }
 
 }
