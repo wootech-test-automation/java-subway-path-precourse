@@ -1,15 +1,13 @@
 package subway.launcher.context;
 
-import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.stream.Collectors;
 import org.jgrapht.GraphPath;
 import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
-import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.WeightedMultigraph;
+import subway.domain.LineRepository;
 import subway.domain.ResultDto;
 import subway.domain.Station;
+import subway.domain.StationRepository;
 import subway.domain.section.Section;
 import subway.domain.section.SectionRepository;
 import subway.domain.station.StationDivision;
@@ -21,16 +19,24 @@ public class SystemContext {
     private StationDivision stationDivision;
 
     public void initializeStationDivision(StationDivision stationDivision) {
+        StationRepository.existsByStation(stationDivision.getUpStation());
+        StationRepository.existsByStation(stationDivision.getTerminalStation());
+        LineRepository.existsSameLine(stationDivision.getUpStation(), stationDivision.getTerminalStation());
         this.stationDivision = stationDivision;
     }
 
     public ResultDto calculateShortestDistance(WeightCode code) {
-        DijkstraShortestPath dijkstraShortestPath = getDijkstraShortestPath(code);
-        var result= dijkstraShortestPath.getPath(stationDivision.getUpStation(), stationDivision.getTerminalStation());
-        return getResultDto(result);
+        try {
+            DijkstraShortestPath dijkstraShortestPath = getDijkstraShortestPath(code);
+            var result = dijkstraShortestPath.getPath(stationDivision.getUpStation(),
+                    stationDivision.getTerminalStation());
+            return generateResultDto(result);
+        }catch (IllegalArgumentException exception){
+            throw new IllegalStateException("연결할 수 없는 역입니다.");
+        }
     }
 
-    private ResultDto getResultDto(GraphPath result) {
+    private ResultDto generateResultDto(GraphPath result) {
         List<Section> edgeList = result.getEdgeList();
         var distanceSum= edgeList.stream().mapToDouble(s -> s.getWeight(WeightCode.DISTANCE)).sum();
         var timeSum = edgeList.stream().mapToDouble(s -> s.getWeight(WeightCode.TIME)).sum();
