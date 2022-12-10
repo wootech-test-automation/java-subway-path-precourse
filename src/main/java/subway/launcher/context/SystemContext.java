@@ -18,8 +18,7 @@ public class SystemContext {
     private StationDivision stationDivision;
 
     public void initializeStationDivision(StationDivision stationDivision) {
-        StationRepository.existsByStation(stationDivision.getUpStation());
-        StationRepository.existsByStation(stationDivision.getTerminalStation());
+
         LineRepository.existsSameLine(stationDivision.getUpStation(), stationDivision.getTerminalStation());
         this.stationDivision = stationDivision;
     }
@@ -50,5 +49,9 @@ public class SystemContext {
             graph.setEdgeWeight(section.getFirstEdgeStation(),section.getLastEdgeStation(),section.getWeight(code));
         });
         return new DijkstraShortestPath(graph);
+    }
+
+    public void validateExistsStation(Station station) {
+        StationRepository.existsByStation(station);
     }
 }
