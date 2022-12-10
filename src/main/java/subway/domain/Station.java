@@ -1,15 +1,21 @@
 package subway.domain;
 
-public class Station {
-    private String name;
+import subway.domain.enums.StationStatus;
 
-    public Station(String name) {
-        this.name = name;
+public class Station {
+    private StationStatus station;
+
+    public Station(StationStatus station) {
+        this.station = station;
     }
 
     public String getName() {
-        return name;
+        return station.getName();
     }
+    public StationStatus getStation() {
+        return station;
+    }
+
 
     // 추가 기능 구현
 }
