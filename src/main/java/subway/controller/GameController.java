@@ -1,8 +1,5 @@
 package subway.controller;
 
-import subway.domain.DistanceRepository;
-import subway.domain.line.LineRepository;
-import subway.domain.station.StationRepository;
 import subway.domain.option.MainOption;
 import subway.view.InputView;
 import subway.view.OutputView;

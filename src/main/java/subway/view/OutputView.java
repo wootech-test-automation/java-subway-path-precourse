@@ -37,7 +37,7 @@ public class OutputView {
     public void printQueryResult(int weight, List<String> result) {
         System.out.println(ConsoleMessage.OUTPUT_QUERY_RESULT.message);
         printFormattedQueryResult(DIVIDER);
-        printFormattedQueryResult(String.format("총 거리: %d", weight));
+        printFormattedQueryResult(String.format("총 거리: %dkm", weight));
         printFormattedQueryResult(DIVIDER);
         for (String station : result) {
             printFormattedQueryResult(station);
@@ -46,7 +46,6 @@ public class OutputView {
 
     private void printFormattedQueryResult(String string) {
         System.out.println(String.format("[INFO] %s", string));
-        ;
     }
 
 }
