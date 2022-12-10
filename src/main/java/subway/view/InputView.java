@@ -2,6 +2,7 @@ package subway.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import subway.domain.Station;
+import subway.domain.StationRepository;
 import subway.domain.option.MainOption;
 import subway.domain.option.RouteOption;
 import subway.util.Util;
@@ -31,7 +32,8 @@ public class InputView {
         return RouteOption.from(Util.removeSpace(Console.readLine()));
     }
 
-    public Station readDepartureStation(){
+    public Station readDepartureStation() {
         System.out.println(ConsoleMessage.INPUT_DEPARTURE_STATION.message);
+        return StationRepository.findStationByName(Util.removeSpace(Console.readLine()));
     }
 }

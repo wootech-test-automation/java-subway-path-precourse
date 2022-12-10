@@ -1,5 +1,7 @@
 package subway.controller;
 
+import subway.domain.Station;
+import subway.domain.StationRepository;
 import subway.domain.option.RouteOption;
 import subway.view.InputView;
 import subway.view.OutputView;
@@ -17,6 +19,8 @@ public class RouteSearchController {
     public void search() {
         outputView.printRouteOption();
         RouteOption routeOption = inputView.readRouteOption();
+
+        Station departureStation = inputView.readDepartureStation();
 
     }
 }
