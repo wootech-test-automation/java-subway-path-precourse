@@ -29,12 +29,4 @@ public class Station {
     public int hashCode() {
         return Objects.hash(getName());
     }
-
-    @Override
-    public String toString() {
-        return "Station{" +
-                "name='" + name + '\'' +
-                '}';
-    }
-// 추가 기능 구현
 }

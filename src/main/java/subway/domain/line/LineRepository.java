@@ -12,8 +12,9 @@ public class LineRepository {
 
     static {
         LineRepository.addLine(new Line("2호선", List.of(new Station("교대역"), new Station("강남역"), new Station("역삼역"))));
-        LineRepository.addLine(new Line("3호선", List.of
-                (new Station("교대역"), new Station("남부터미널역"), new Station("양재역"), new Station("매봉역")))
+        LineRepository.addLine(new Line("3호선",
+                List.of(new Station("교대역"), new Station("남부터미널역"), new Station("양재역"), new Station("매봉역")))
+
         );
         LineRepository.addLine(new Line("신분당선",
                 List.of(new Station("강남역"), new Station("양재역"), new Station("양재시민의숲역")))

@@ -14,6 +14,8 @@ public class SystemLauncher {
     private final OutputView outputView;
     private final SystemContext context;
 
+    private BasicStatus status = new InitStatus();
+
     public SystemLauncher() {
         this.inputView = new InputView();
         this.outputView = new OutputView();
@@ -21,7 +23,6 @@ public class SystemLauncher {
     }
 
     public void execute() {
-        BasicStatus status = new InitStatus();
         while (status.runnable()) {
             try {
                 status = status.next(context, inputView, outputView);
