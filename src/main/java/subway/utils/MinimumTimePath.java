@@ -21,6 +21,9 @@ public class MinimumTimePath {
         }
         addStations();
         addDistances();
+
+//        double edgeWeight = shortestTimes.getEdgeWeight(shortestTimes.getEdge(KYODAE.getName(), GANGNAM.getName()));
+//        System.out.println(edgeWeight);
     }
 
     private static void addDistances() {

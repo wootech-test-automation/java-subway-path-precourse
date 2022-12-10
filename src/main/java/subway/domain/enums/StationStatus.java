@@ -1,6 +1,7 @@
 package subway.domain.enums;
 
 import java.util.Arrays;
+import java.util.List;
 import subway.message.ErrorMessage;
 
 public enum StationStatus {
@@ -16,6 +17,17 @@ public enum StationStatus {
 
     StationStatus(final String name) {
         this.name = name;
+    }
+
+    public static void containsAll(final List<String> inputSubwayStation) {
+        inputSubwayStation.forEach(StationStatus::contains);
+    }
+
+    private static void contains(final String station) {
+        Arrays.stream(StationStatus.values())
+                .filter(stationStatus -> stationStatus.name.equals(station))
+                .findAny()
+                .orElseThrow(() -> new IllegalArgumentException(ErrorMessage.NO_STATION_ERROR));
     }
 
     public String getName() {

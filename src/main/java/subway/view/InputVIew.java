@@ -1,15 +1,19 @@
 package subway.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
+import java.util.List;
 import subway.message.InputMessage;
-import subway.message.OutputMessage;
 
 public class InputVIew {
 
+    public static final String START_STATION_INPUT_MESSAGE = "## 출발역을 입력하세요.";
+    public static final String END_STATION_INPUT_MESSAGE = "## 도착역을 입력하세요.";
+
     public String inputFeature() {
-        System.out.println(OutputMessage.MAIN_MENU_MESSAGE);
-        System.out.println(OutputMessage.SEARCH_PATH_MESSAGE);
-        System.out.println(OutputMessage.END_PATH_MESSAGE);
+        System.out.println(InputMessage.MAIN_MENU_MESSAGE);
+        System.out.println(InputMessage.SEARCH_PATH_MESSAGE);
+        System.out.println(InputMessage.END_PATH_MESSAGE);
         return inputSelection();
     }
 
@@ -21,11 +25,21 @@ public class InputVIew {
 
     public String inputPathStandard() {
         System.out.println();
-        System.out.println("## 경로 기준");
-        System.out.println("1. 최단 거리");
-        System.out.println("2. 최소 시간");
-        System.out.println("B. 돌아가기");
+        System.out.println(InputMessage.PATH_STANDARD);
+        System.out.println(InputMessage.SHORTEST_PATH_MESSAGE);
+        System.out.println(InputMessage.MINIMUM_TIME_MESSAGE);
+        System.out.println(InputMessage.BACK_MESSAGE);
         return inputSelection();
+    }
+
+    public List<String> inputSubwayStation() {
+        List<String> userInputs = new ArrayList<>();
+        System.out.println(InputMessage.START_STATION_INPUT_MESSAGE);
+        userInputs.add(readLine());
+        System.out.println();
+        System.out.println(InputMessage.END_STATION_INPUT_MESSAGE);
+        userInputs.add(readLine());
+        return userInputs;
     }
 
     private String readLine() {

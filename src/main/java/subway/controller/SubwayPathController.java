@@ -2,6 +2,7 @@ package subway.controller;
 
 import subway.service.LineService;
 import subway.service.StationService;
+import subway.service.SubwayPathService;
 import subway.utils.InputValidator;
 import subway.utils.ShortestDistancePath;
 import subway.utils.MinimumTimePath;
@@ -14,8 +15,7 @@ public class SubwayPathController {
     public static final String MINIMUM_TIME = "2";
     public static final String QUIT = "Q";
     public static final String BACK = "B";
-    private final LineService lineService = new LineService();
-    private final StationService stationService = new StationService();
+    private final SubwayPathService subwayPathService = new SubwayPathService();
     private final OutputView outputView = new OutputView();
     private final InputVIew inputView = new InputVIew();
 
@@ -46,7 +46,7 @@ public class SubwayPathController {
 
     private void determinePathStandard(final String validatedInput) {
         if (validatedInput.equals(SHORTEST_PATH)) {
-
+            requestShortestPath();
             return;
         }
         if (validatedInput.equals(MINIMUM_TIME)) {
@@ -55,10 +55,13 @@ public class SubwayPathController {
         run();
     }
 
+    private void requestShortestPath() {
+        subwayPathService.createShortestPathResult(inputView.inputSubwayStation());
+    }
+
     private void initializeSubwayPath() {
         ShortestDistancePath.initializePath();
         MinimumTimePath.initializePath();
-        lineService.initializeLine();
-        stationService.initializeStation();
+        subwayPathService.initializeSubwayPath();
     }
 }
