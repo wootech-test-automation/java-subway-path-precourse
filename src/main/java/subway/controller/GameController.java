@@ -15,18 +15,18 @@ public class GameController {
     }
 
     public void play() {
-
         InitialSettingController.initialize();
-
         do {
             outputView.printMainScreen();
             mainOption = inputView.readMainOption();
+            handleSearch();
+        } while (!mainOption.isQuit());
+    }
 
-            if (mainOption == MainOption.ROUTE_SEARCH) {
-                RouteSearchController routeSearchController = new RouteSearchController(inputView, outputView);
-                routeSearchController.search();
-            }
-
-        } while (mainOption != MainOption.QUIT);
+    private void handleSearch() {
+        if (mainOption.isSearch()) {
+            RouteSearchController routeSearchController = new RouteSearchController(inputView, outputView);
+            routeSearchController.search();
+        }
     }
 }

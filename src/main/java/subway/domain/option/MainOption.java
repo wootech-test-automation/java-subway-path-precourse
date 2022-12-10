@@ -19,4 +19,12 @@ public enum MainOption {
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException(ExceptionMessage.INVALID_MAIN_OPTION.getMessage()));
     }
+
+    public boolean isQuit(){
+        return this == QUIT;
+    }
+
+    public boolean isSearch(){
+        return this == ROUTE_SEARCH;
+    }
 }

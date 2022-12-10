@@ -42,6 +42,7 @@ public class OutputView {
         for (String station : result) {
             printFormattedQueryResult(station);
         }
+        System.out.println();
     }
 
     private void printFormattedQueryResult(String string) {
