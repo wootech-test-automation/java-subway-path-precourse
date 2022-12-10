@@ -2,8 +2,9 @@ package subway.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-import subway.domain.DistanceRepository;
-import subway.domain.TimeRepository;
+import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
+import org.jgrapht.graph.DefaultWeightedEdge;
+import org.jgrapht.graph.WeightedMultigraph;
 import subway.domain.line.Line;
 import subway.domain.line.LineRepository;
 import subway.domain.station.Station;
@@ -32,67 +33,43 @@ public class InitialSettingController {
         lines.stream().map(Line::new).forEach(LineRepository::addLine);
     }
 
-/*    private static void connectStationsWithLines() {
-        Map<String, List<String>> stationsAndLines = setStationsAndLinesMap();
-        stationsAndLines.keySet().stream()
-                .map(StationRepository::findStationByName)
-                .forEach(station -> station.addLines(stationsAndLines.get(station.getName())));
-    }
-
-    private static void connectLinesWithStations() {
-        Map<String, List<String>> linesAndStations = setLinesAndStationsMap();
-        linesAndStations.keySet().stream()
-                .map(LineRepository::findLineByName)
-                .forEach(line -> line.addStations(linesAndStations.get(line.getName())));
-    }*/
-
     private static void initializeDistanceRepository() {
-        for (Station station : StationRepository.stations()) {
-            DistanceRepository.addStation(station);
-        }
-        DistanceRepository.addDistance(station("교대역"), station("강남역"), 2);
-        DistanceRepository.addDistance(station("강남역"), station("역삼역"), 2);
-        DistanceRepository.addDistance(station("교대역"), station("남부터미널역"), 3);
-        DistanceRepository.addDistance(station("남부터미널역"), station("양재역"), 6);
-        DistanceRepository.addDistance(station("양재역"), station("매봉역"), 1);
-        DistanceRepository.addDistance(station("강남역"), station("양재역"), 2);
-        DistanceRepository.addDistance(station("양재역"), station("양재시민의숲역"), 10);
+        WeightedMultigraph<String, DefaultWeightedEdge> distanceGraph = getGraphWithStations();
+        distanceGraph.setEdgeWeight(distanceGraph.addEdge("교대역", "강남역"), 2);
+        distanceGraph.setEdgeWeight(distanceGraph.addEdge("강남역", "역삼역"), 2);
+        distanceGraph.setEdgeWeight(distanceGraph.addEdge("교대역", "남부터미널역"), 3);
+        distanceGraph.setEdgeWeight(distanceGraph.addEdge("남부터미널역", "양재역"), 6);
+        distanceGraph.setEdgeWeight(distanceGraph.addEdge("양재역", "매봉역"), 1);
+        distanceGraph.setEdgeWeight(distanceGraph.addEdge("강남역", "양재역"), 2);
+        distanceGraph.setEdgeWeight(distanceGraph.addEdge("양재역", "양재시민의숲역"), 10);
+        DijkstraShortestPath shortestDistance = new DijkstraShortestPath(distanceGraph);
+        RouteSearchController.addToPath(shortestDistance);
     }
 
     private static void initializeTimeRepository() {
+        WeightedMultigraph<String, DefaultWeightedEdge> timeGraph = getGraphWithStations();
+        timeGraph.setEdgeWeight(timeGraph.addEdge("교대역", "강남역"), 3);
+        timeGraph.setEdgeWeight(timeGraph.addEdge("강남역", "역삼역"), 3);
+        timeGraph.setEdgeWeight(timeGraph.addEdge("교대역", "남부터미널역"), 2);
+        timeGraph.setEdgeWeight(timeGraph.addEdge("남부터미널역", "양재역"), 5);
+        timeGraph.setEdgeWeight(timeGraph.addEdge("양재역", "매봉역"), 1);
+        timeGraph.setEdgeWeight(timeGraph.addEdge("강남역", "양재역"), 8);
+        timeGraph.setEdgeWeight(timeGraph.addEdge("양재역", "양재시민의숲역"), 3);
+        DijkstraShortestPath shortestTime = new DijkstraShortestPath(timeGraph);
+        RouteSearchController.addToPath(shortestTime);
+    }
+
+    private static WeightedMultigraph<String, DefaultWeightedEdge> getGraphWithStations() {
+        WeightedMultigraph<String, DefaultWeightedEdge> graph
+                = new WeightedMultigraph(DefaultWeightedEdge.class);
         for (Station station : StationRepository.stations()) {
-            TimeRepository.addStation(station);
+            graph.addVertex(station.getName());
         }
-        TimeRepository.addTime(station("교대역"), station("강남역"), 3);
-        TimeRepository.addTime(station("강남역"), station("역삼역"), 3);
-        TimeRepository.addTime(station("교대역"), station("남부터미널역"), 2);
-        TimeRepository.addTime(station("남부터미널역"), station("양재역"), 5);
-        TimeRepository.addTime(station("양재역"), station("매봉역"), 1);
-        TimeRepository.addTime(station("강남역"), station("양재역"), 8);
-        TimeRepository.addTime(station("양재역"), station("양재시민의숲역"), 3);
+        return graph;
     }
 
     private static Station station(String name) {
         return StationRepository.findStationByName(name);
     }
 
-   /* private static Map<String, List<String>> setStationsAndLinesMap() {
-        Map<String, List<String>> stationsAndLines = new HashMap<>();
-        stationsAndLines.put("교대역", List.of("2호선", "3호선"));
-        stationsAndLines.put("강남역", List.of("2호선", "신분당선"));
-        stationsAndLines.put("역삼역", List.of("2호선"));
-        stationsAndLines.put("남부터미널역", List.of("3호선"));
-        stationsAndLines.put("양재역", List.of("3호선", "신분당선"));
-        stationsAndLines.put("매봉역", List.of("3호선"));
-        stationsAndLines.put("양재시민의숲역", List.of("신분당선"));
-        return stationsAndLines;
-    }
-
-    private static Map<String, List<String>> setLinesAndStationsMap() {
-        Map<String, List<String>> linesAndStations = new HashMap<>();
-        linesAndStations.put("2호선", List.of("교대역", "강남역", "역삼역"));
-        linesAndStations.put("3호선", List.of("교대역", "남부터미널역", "양재역", "매봉역"));
-        linesAndStations.put("신분당선", List.of("강남역", "양재역", "양재시민의숲역"));
-        return linesAndStations;
-    }*/
 }

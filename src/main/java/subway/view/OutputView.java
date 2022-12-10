@@ -4,6 +4,8 @@ import java.util.List;
 
 public class OutputView {
 
+    public static final String DIVIDER = "---";
+
     private enum ConsoleMessage {
         OUTPUT_MAIN_SCREEN("## 메인 화면\n"
                 + "1. 경로 조회\n"
@@ -32,9 +34,19 @@ public class OutputView {
         System.out.println();
     }
 
-    public void printQueryResult(List<String> result) {
-        System.out.println(ConsoleMessage.OUTPUT_QUERY_RESULT);
-        System.out.println(result);
+    public void printQueryResult(int weight, List<String> result) {
+        System.out.println(ConsoleMessage.OUTPUT_QUERY_RESULT.message);
+        printFormattedQueryResult(DIVIDER);
+        printFormattedQueryResult(String.format("총 거리: %d", weight));
+        printFormattedQueryResult(DIVIDER);
+        for (String station : result) {
+            printFormattedQueryResult(station);
+        }
+    }
+
+    private void printFormattedQueryResult(String string) {
+        System.out.println(String.format("[INFO] %s", string));
+        ;
     }
 
 }
