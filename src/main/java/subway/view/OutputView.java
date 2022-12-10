@@ -1,5 +1,7 @@
 package subway.view;
 
+import java.util.List;
+
 public class OutputView {
 
     private enum ConsoleMessage {
@@ -28,6 +30,11 @@ public class OutputView {
     public void printRouteOption() {
         System.out.println(ConsoleMessage.OUTPUT_ROUTE_OPTION.message);
         System.out.println();
+    }
+
+    public void printQueryResult(List<String> result) {
+        System.out.println(ConsoleMessage.OUTPUT_QUERY_RESULT);
+        System.out.println(result);
     }
 
 }

@@ -1,5 +1,9 @@
 package subway.controller;
 
+import java.util.List;
+import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
+import subway.domain.DistanceRepository;
+import subway.domain.TimeRepository;
 import subway.domain.station.Station;
 import subway.domain.option.RouteOption;
 import subway.util.message.ExceptionMessage;
@@ -28,6 +32,12 @@ public class RouteSearchController {
 
         validateDifferentDepartureAndArrivalStation(departureStation, arrivalStation);
 
+        if (routeOption == RouteOption.SHORTEST_DISTANCE) {
+            outputView.printQueryResult(DistanceRepository.getShortestDistance(departureStation, arrivalStation));
+        }
+        if (routeOption == RouteOption.SHORTEST_TIME) {
+            outputView.printQueryResult(TimeRepository.getShortestTime(departureStation, arrivalStation));
+        }
     }
 
     private static void validateDifferentDepartureAndArrivalStation(Station departureStation, Station arrivalStation) {
