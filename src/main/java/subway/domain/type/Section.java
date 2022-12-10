@@ -39,6 +39,14 @@ public class Section {
         return line;
     }
 
+    public Station getSource() {
+        return line.getSource();
+    }
+
+    public Station getTarget() {
+        return line.getTarget();
+    }
+
     public int getDistance() {
         return distance;
     }
