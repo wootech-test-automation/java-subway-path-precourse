@@ -13,8 +13,12 @@ public class OutputView extends IoPrinter{
         this.printTitle("조회 결과");
         this.info("---");
         this.info(String.format("총 거리: %dkm", result.getDistanceSum()));
-        this.info(String.format("총 소요 시간: %dkm", result.getTimeSum()));
+        this.info(String.format("총 소요 시간: %d분", result.getTimeSum()));
         this.info("---");
         this.info(result.getStationName());
+    }
+
+    public void printError(String message) {
+        this.println(String.format("[ERROR] %s",message));
     }
 }
