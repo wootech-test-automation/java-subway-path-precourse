@@ -15,7 +15,7 @@ public class Section {
     }
 
     public static Section of(Line line, int distance, int time) {
-        return new Section(line,distance, time);
+        return new Section(line, distance, time);
     }
 
     @Override
