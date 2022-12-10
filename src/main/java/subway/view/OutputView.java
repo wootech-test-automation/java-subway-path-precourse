@@ -25,4 +25,9 @@ public class OutputView {
         System.out.println();
     }
 
+    public void printRouteOption() {
+        System.out.println(ConsoleMessage.OUTPUT_ROUTE_OPTION.message);
+        System.out.println();
+    }
+
 }

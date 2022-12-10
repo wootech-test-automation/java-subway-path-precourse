@@ -1,12 +1,14 @@
 package subway.controller;
 
 import subway.domain.option.MainOption;
+import subway.domain.option.RouteOption;
 import subway.view.InputView;
 import subway.view.OutputView;
 
 public class GameController {
     private final InputView inputView;
     private final OutputView outputView;
+    private MainOption mainOption;
 
     public GameController(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
@@ -17,9 +19,16 @@ public class GameController {
 
         InitialSettingController initialSettingController = new InitialSettingController();
 
-        outputView.printMainScreen();
-        MainOption mainOption = inputView.readMainOption();
-        System.out.println(mainOption);
+        do {
+            outputView.printMainScreen();
+            mainOption = inputView.readMainOption();
+            System.out.println(mainOption);
 
+            if (mainOption == MainOption.ROUTE_SEARCH) {
+                RouteSearchController routeSearchController = new RouteSearchController(inputView, outputView);
+                routeSearchController.search();
+            }
+
+        } while (mainOption != MainOption.QUIT);
     }
 }

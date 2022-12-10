@@ -3,6 +3,7 @@ package subway.util.message;
 public enum ExceptionMessage {
 
     INVALID_MAIN_OPTION("올바른 메인 옵션을 입력해 주세요."),
+    INVALID_ROUTE_OPTION("올바른 경로 조회 옵션을 입력해 주세요."),
     INVALID_NOT_NUMERIC("자연수만 입력 가능합니다."),
     INVALID_OUT_OF_INT_RANGE("입력 범위를 초과하였습니다.");
 
