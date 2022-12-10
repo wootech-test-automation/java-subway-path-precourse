@@ -2,6 +2,8 @@ package subway.view;
 
 public class View {
 
+    private static final String ERROR = "[ERROR]";
+
     protected void print(String message) {
         System.out.println(message);
     }
@@ -11,6 +13,6 @@ public class View {
     }
 
     protected void printError(String message) {
-        System.out.println("[ERROR]" + message);
+        System.out.println(ERROR + " " + message);
     }
 }
