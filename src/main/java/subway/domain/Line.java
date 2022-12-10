@@ -1,15 +1,20 @@
 package subway.domain;
 
-public class Line {
-    private String name;
+import subway.domain.enums.LineStatus;
 
-    public Line(String name) {
-        this.name = name;
+public class Line {
+    private LineStatus line;
+
+    public Line(LineStatus line) {
+        this.line = line;
     }
 
     public String getName() {
-        return name;
+        return line.getName();
     }
 
-    // 추가 기능 구현
+    public LineStatus getLine() {
+        return line;
+    }
+
 }
