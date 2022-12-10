@@ -23,9 +23,16 @@ public class SubwayPathService {
         return ShortestDistancePath.createResultList(stations);
     }
 
+    public List<Object> createMinimumTimeResult(final List<String> inputSubwayStation) {
+        List<Station> stations = stationService.findStations(inputSubwayStation);
+        validateInputStations(stations);
+        return MinimumTimePath.createResultList(stations);
+    }
+
     private void validateInputStations(final List<Station> inputSubwayStations) {
         if (inputSubwayStations.get(0).equals(inputSubwayStations.get(1))) {
             throw new IllegalArgumentException(ErrorMessage.SAME_STATION_ERROR);
         }
     }
+
 }

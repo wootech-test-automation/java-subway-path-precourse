@@ -12,7 +12,7 @@ public class OutputView {
         System.out.println("## 조회 결과");
         System.out.println("[INFO] ---");
         System.out.printf("[INFO] 총 거리: %dkm\n", (int) shortestPathResult.get(0));
-        System.out.printf("[INFO] 총 소요시간: %d분\n", (int) shortestPathResult.get(1));
+        System.out.printf("[INFO] 총 소요 시간: %d분\n", (int) shortestPathResult.get(1));
         System.out.println("[INFO] ---");
         System.out.println(createResultStationsMessage((List<String>) shortestPathResult.get(2)));
     }

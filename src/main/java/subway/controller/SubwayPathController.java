@@ -48,12 +48,16 @@ public class SubwayPathController {
     private void determinePathStandard(final String validatedInput) {
         if (validatedInput.equals(SHORTEST_PATH)) {
             requestShortestPath();
-            return;
         }
         if (validatedInput.equals(MINIMUM_TIME)) {
-            return;
+            requestMinimumTime();
         }
         run();
+    }
+
+    private void requestMinimumTime() {
+        List<Object> shortestPathResult = subwayPathService.createMinimumTimeResult(inputView.inputSubwayStation());
+        outputView.printResults(shortestPathResult);
     }
 
     private void requestShortestPath() {

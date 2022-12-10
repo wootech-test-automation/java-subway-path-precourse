@@ -61,7 +61,7 @@ public class ShortestDistancePath {
     }
 
     private static int calculateTime(final List vertexes) {
-        return MinimumTimePath.calculateTimeByEdges(vertexes);
+        return MinimumTimePath.calculateTimeByVertexes(vertexes);
     }
 
     private static List createVertexList(final Station startStation, final Station endStation) {
@@ -74,5 +74,13 @@ public class ShortestDistancePath {
         DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(shortestDistances);
         GraphPath path = dijkstraShortestPath.getPath(startStation.getName(), endStation.getName());
         return (int) path.getWeight();
+    }
+
+    public static int calculateDistanceByVertexes(final List<String> vertexes) {
+        int distanceSum = 0;
+        for (int index = 0; index < vertexes.size() - 1; index++) {
+            distanceSum += shortestDistances.getEdgeWeight(shortestDistances.getEdge(vertexes.get(index), vertexes.get(index + 1)));
+        }
+        return distanceSum;
     }
 }
