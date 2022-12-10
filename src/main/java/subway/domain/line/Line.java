@@ -2,10 +2,12 @@ package subway.domain.line;
 
 import java.util.ArrayList;
 import java.util.List;
+import subway.domain.station.Station;
+import subway.domain.station.StationRepository;
 
 public class Line {
     private String name;
-    private final List<Line> stations = new ArrayList<>();
+    private final List<Station> stations = new ArrayList<>();
 
     public Line(String name) {
         this.name = name;
@@ -17,7 +19,8 @@ public class Line {
 
     // 추가 기능 구현
     public void addStations(List<String> input) {
-        input.stream().map(LineRepository::findLineByName)
+        input.stream()
+                .map(StationRepository::findStationByName)
                 .forEach(stations::add);
     }
 

@@ -31,4 +31,5 @@ public class LineRepository {
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException(ExceptionMessage.NO_SUCH_LINE.getMessage()));
     }
+
 }

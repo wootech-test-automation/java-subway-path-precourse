@@ -28,7 +28,6 @@ public class Station {
     public String toString() {
         return "Station{" +
                 "name='" + name + '\'' +
-                ", lines=" + lines +
                 '}';
     }
 }
