@@ -2,26 +2,62 @@ package subway.controller;
 
 import subway.service.LineService;
 import subway.service.StationService;
-import subway.utils.ShortestDistancePathService;
-import subway.utils.ShortestTimePathService;
+import subway.utils.InputValidator;
+import subway.utils.ShortestDistancePath;
+import subway.utils.MinimumTimePath;
 import subway.view.InputVIew;
 import subway.view.OutputView;
 
 public class SubwayPathController {
+    public static final String SEARCH_PATH = "1";
+    public static final String SHORTEST_PATH = "1";
+    public static final String MINIMUM_TIME = "2";
+    public static final String QUIT = "Q";
+    public static final String BACK = "B";
     private final LineService lineService = new LineService();
     private final StationService stationService = new StationService();
     private final OutputView outputView = new OutputView();
-    private final InputVIew inputVIew = new InputVIew();
+    private final InputVIew inputView = new InputVIew();
 
     public void run() {
         initializeSubwayPath();
-        outputView.printMainMenu();
-        inputVIew.inputFeature();
+        requestMenu(inputView.inputFeature());
+    }
+
+    private void requestMenu(final String userInput) {
+        try {
+            determineMenu(InputValidator.validateMenuSelect(userInput));
+        } catch (IllegalArgumentException exception) {
+            outputView.printMessage(exception.getMessage());
+            run();
+        }
+    }
+
+    private void determineMenu(final String validatedInput) {
+        if (validatedInput.equals(SEARCH_PATH)) {
+            try {
+                determinePathStandard(InputValidator.validatePathStandard(inputView.inputPathStandard()));
+            } catch (IllegalArgumentException exception) {
+                outputView.printMessage(exception.getMessage());
+                determineMenu(validatedInput);
+            }
+        }
+    }
+
+    private void determinePathStandard(final String validatedInput) {
+        if (validatedInput.equals(SHORTEST_PATH)) {
+
+            return;
+        }
+        if (validatedInput.equals(MINIMUM_TIME)) {
+            return;
+        }
+        run();
     }
 
     private void initializeSubwayPath() {
-        ShortestDistancePathService.initializePath();
-        ShortestTimePathService.initializePath();
+        ShortestDistancePath.initializePath();
+        MinimumTimePath.initializePath();
         lineService.initializeLine();
         stationService.initializeStation();
     }

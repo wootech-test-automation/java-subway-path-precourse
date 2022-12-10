@@ -11,13 +11,15 @@ import static subway.domain.enums.StationStatus.YEOKSAM;
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.WeightedMultigraph;
 
-public class ShortestDistancePathService {
+public class ShortestDistancePath {
     private final static WeightedMultigraph<String, DefaultWeightedEdge> shortestDistances = new WeightedMultigraph<>(
             DefaultWeightedEdge.class);
 
     public static void initializePath() {
+        if (!shortestDistances.vertexSet().isEmpty()) {
+            return;
+        }
         addStations();
-
         addDistances();
     }
 

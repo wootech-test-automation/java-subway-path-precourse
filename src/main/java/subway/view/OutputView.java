@@ -10,4 +10,11 @@ public class OutputView {
         System.out.println(OutputMessage.END_PATH_MESSAGE);
         System.out.println();
     }
+
+    public void printMessage(final String message) {
+        System.out.println(message);
+    }
+
+    public void printSelectionOfStandard() {
+    }
 }
