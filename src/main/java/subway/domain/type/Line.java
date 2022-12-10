@@ -13,6 +13,10 @@ public class Line {
         this.target = target;
     }
 
+    public static Line of(String name, String source, String target) {
+        return new Line(name, new Station(source), new Station(target));
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
