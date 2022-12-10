@@ -8,7 +8,6 @@ public class Line {
 
     public Line(String name, List<Station> stations) {
         this.name = name;
-        this.stations = stations;
     }
 
     public String getName() {
