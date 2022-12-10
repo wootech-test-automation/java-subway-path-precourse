@@ -4,16 +4,16 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.Test;
-
 import java.util.List;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
+import org.junit.jupiter.api.Test;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 class ApplicationTest extends NsTest {
 
     private static final String ERROR_MESSAGE = "[ERROR]";
+
     @Test
     void 정상적으로_동작_하는가() {
         run("1", "1", "교대역", "양재역", "Q");
@@ -38,6 +38,7 @@ class ApplicationTest extends NsTest {
                 }
         );
     }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});

@@ -10,7 +10,6 @@ import static subway.domain.enums.StationStatus.YEOKSAM;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import org.jgrapht.GraphPath;
 import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import org.jgrapht.graph.DefaultWeightedEdge;
@@ -79,7 +78,8 @@ public class ShortestDistancePath {
     public static int calculateDistanceByVertexes(final List<String> vertexes) {
         int distanceSum = 0;
         for (int index = 0; index < vertexes.size() - 1; index++) {
-            distanceSum += shortestDistances.getEdgeWeight(shortestDistances.getEdge(vertexes.get(index), vertexes.get(index + 1)));
+            distanceSum += shortestDistances.getEdgeWeight(
+                    shortestDistances.getEdge(vertexes.get(index), vertexes.get(index + 1)));
         }
         return distanceSum;
     }

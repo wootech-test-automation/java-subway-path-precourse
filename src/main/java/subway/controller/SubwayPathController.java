@@ -1,13 +1,9 @@
 package subway.controller;
 
 import java.util.List;
-import subway.service.LineService;
-import subway.service.StationService;
 import subway.service.SubwayPathService;
 import subway.utils.InputValidator;
-import subway.utils.ShortestDistancePath;
-import subway.utils.MinimumTimePath;
-import subway.view.InputVIew;
+import subway.view.InputView;
 import subway.view.OutputView;
 
 public class SubwayPathController {
@@ -18,7 +14,7 @@ public class SubwayPathController {
     public static final String BACK = "B";
     private final SubwayPathService subwayPathService = new SubwayPathService();
     private final OutputView outputView = new OutputView();
-    private final InputVIew inputView = new InputVIew();
+    private final InputView inputView = new InputView();
 
     public void run() {
         initializeSubwayPath();

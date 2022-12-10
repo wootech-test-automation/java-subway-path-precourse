@@ -1,8 +1,6 @@
 package subway.domain.enums;
 
-import java.util.Arrays;
 import java.util.List;
-import subway.message.ErrorMessage;
 
 public enum LineStatus {
     LINE_TWO("2호선", List.of(

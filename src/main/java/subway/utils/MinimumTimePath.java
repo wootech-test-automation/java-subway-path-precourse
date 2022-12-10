@@ -20,7 +20,7 @@ public class MinimumTimePath {
     private static final int START = 0;
     private static final int END = 1;
 
-    private final static WeightedMultigraph<String, DefaultWeightedEdge> minimumTimes = new WeightedMultigraph<>(
+    private static final WeightedMultigraph<String, DefaultWeightedEdge> minimumTimes = new WeightedMultigraph<>(
             DefaultWeightedEdge.class);
 
     public static void initializePath() {
@@ -62,8 +62,8 @@ public class MinimumTimePath {
 
     public static List<Object> createResultList(final List<Station> stations) {
         List<Object> results = new ArrayList<>();
-        results.add(calculateMinimumTime(stations.get(START), stations.get(END)));
         results.add(calculateDistance(createVertexList(stations.get(START), stations.get(END))));
+        results.add(calculateMinimumTime(stations.get(START), stations.get(END)));
         results.add(createVertexList(stations.get(START), stations.get(END)));
         return results;
     }
@@ -75,7 +75,6 @@ public class MinimumTimePath {
     private static List createVertexList(final Station startStation, final Station endStation) {
         DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(minimumTimes);
         GraphPath path = dijkstraShortestPath.getPath(startStation.getName(), endStation.getName());
-        System.out.println(path.getVertexList());
         return path.getVertexList();
     }
 

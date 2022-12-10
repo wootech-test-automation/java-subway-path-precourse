@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import subway.message.InputMessage;
 
-public class InputVIew {
+public class InputView {
 
     public static final String START_STATION_INPUT_MESSAGE = "## 출발역을 입력하세요.";
     public static final String END_STATION_INPUT_MESSAGE = "## 도착역을 입력하세요.";

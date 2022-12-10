@@ -12,6 +12,7 @@ public class Station {
     public String getName() {
         return station.getName();
     }
+
     public StationStatus getStation() {
         return station;
     }
