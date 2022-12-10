@@ -8,8 +8,8 @@ public class WeightDivision {
 
     public WeightDivision(final String input){
         var splitStr = input.split("/");
-        this.distance= new Weight(splitStr[0]);
         this.time= new Weight(splitStr[1]);
+        this.distance= new Weight(splitStr[0]);
     }
 
     public int getValue(WeightCode weightCode){
