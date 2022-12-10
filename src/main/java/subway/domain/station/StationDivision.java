@@ -1,7 +1,6 @@
 package subway.domain.station;
 
 import java.util.Objects;
-import subway.domain.Station;
 import subway.exception.InvalidInputException;
 
 public class StationDivision {

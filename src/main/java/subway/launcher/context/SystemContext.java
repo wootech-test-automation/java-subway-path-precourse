@@ -1,13 +1,12 @@
 package subway.launcher.context;
 
 import java.util.List;
-import org.jgrapht.GraphPath;
 import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import org.jgrapht.graph.WeightedMultigraph;
-import subway.domain.LineRepository;
-import subway.domain.ResultDto;
-import subway.domain.Station;
-import subway.domain.StationRepository;
+import subway.domain.line.LineRepository;
+import subway.dto.ResultDto;
+import subway.domain.station.Station;
+import subway.domain.station.StationRepository;
 import subway.domain.section.Section;
 import subway.domain.section.SectionRepository;
 import subway.domain.station.StationDivision;

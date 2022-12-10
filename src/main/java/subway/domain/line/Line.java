@@ -1,6 +1,7 @@
-package subway.domain;
+package subway.domain.line;
 
 import java.util.List;
+import subway.domain.station.Station;
 
 public class Line {
     private final String name;

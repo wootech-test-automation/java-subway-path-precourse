@@ -1,8 +1,8 @@
 package subway.view;
 
 import java.util.List;
-import subway.domain.ResultDto;
-import subway.domain.Station;
+import subway.dto.ResultDto;
+import subway.domain.station.Station;
 
 public class OutputView extends IoPrinter{
     public void printResult(List<Station> result) {

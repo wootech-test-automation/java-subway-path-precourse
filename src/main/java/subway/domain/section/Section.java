@@ -1,8 +1,7 @@
 package subway.domain.section;
 
 import org.jgrapht.graph.DefaultWeightedEdge;
-import subway.domain.Station;
-import subway.domain.weight.Weight;
+import subway.domain.station.Station;
 import subway.domain.weight.WeightCode;
 import subway.domain.weight.WeightDivision;
 

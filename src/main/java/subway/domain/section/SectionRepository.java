@@ -3,8 +3,7 @@ package subway.domain.section;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import subway.domain.Station;
-import subway.domain.weight.WeightCode;
+import subway.domain.station.Station;
 import subway.domain.weight.WeightDivision;
 
 public class SectionRepository {

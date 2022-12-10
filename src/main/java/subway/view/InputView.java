@@ -2,7 +2,7 @@ package subway.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.NoSuchElementException;
-import subway.domain.Station;
+import subway.domain.station.Station;
 import subway.domain.station.StationDivision;
 import subway.exception.InvalidInputException;
 import subway.launcher.code.ChildMenu;
