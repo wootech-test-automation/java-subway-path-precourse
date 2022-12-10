@@ -1,9 +1,13 @@
 package subway;
 
 
+import subway.domain.InitRepositoryHelper;
+import subway.launcher.SubwayLauncher;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
-
+        InitRepositoryHelper.init();
+        SubwayLauncher subwayLauncher = new SubwayLauncher();
+        subwayLauncher.play();
     }
 }
