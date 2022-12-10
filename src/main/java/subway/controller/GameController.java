@@ -17,7 +17,7 @@ public class GameController {
 
     public void play() {
 
-        InitialSettingController initialSettingController = new InitialSettingController();
+        InitialSettingController.initialize();
 
         do {
             outputView.printMainScreen();
