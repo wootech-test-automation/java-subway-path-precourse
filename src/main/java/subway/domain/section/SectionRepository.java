@@ -26,7 +26,5 @@ public class SectionRepository {
         return Collections.unmodifiableList(sections);
     }
 
-    public static void calculate(List<Station> result, WeightCode weightCode) {
 
-    }
 }
