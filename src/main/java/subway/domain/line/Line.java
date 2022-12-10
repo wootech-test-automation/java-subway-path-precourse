@@ -21,7 +21,7 @@ public class Line {
     }
 
     // 추가 기능 구현
-    public boolean compareOriginalStationIndexBeforeTargetStation(Station originalStation, Station targetStation ) {
+    public boolean compareOriginalStationIndexBeforeTargetStation(Station originalStation, Station targetStation) {
         return stations.indexOf(originalStation) < stations.indexOf(targetStation);
     }
 }

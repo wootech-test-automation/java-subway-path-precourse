@@ -9,7 +9,7 @@ public class CalculateShortestTime implements BasicStatus {
     @Override
     public BasicStatus next(SystemContext context, InputView inputView, OutputView outputView) {
         outputView.printResult(context.calculateShortestByWeight(WeightCode.TIME));
-        return  new SelectMainMenuStatus();
+        return new SelectMainMenuStatus();
     }
 
     @Override

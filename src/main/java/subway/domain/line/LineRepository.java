@@ -7,7 +7,9 @@ import java.util.Objects;
 import subway.domain.station.Station;
 
 public class LineRepository {
+
     private static final List<Line> lines = new ArrayList<>();
+
     static {
         LineRepository.addLine(new Line("2호선", List.of(new Station("교대역"), new Station("강남역"), new Station("역삼역"))));
         LineRepository.addLine(new Line("3호선", List.of
@@ -17,6 +19,7 @@ public class LineRepository {
                 List.of(new Station("강남역"), new Station("양재역"), new Station("양재시민의숲역")))
         );
     }
+
     public static List<Line> lines() {
         return Collections.unmodifiableList(lines);
     }
@@ -34,7 +37,8 @@ public class LineRepository {
     }
 
     public static void existsSameLine(Station upStation, Station terminalStation) {
-        var result = lines().stream().noneMatch(line -> line.compareOriginalStationIndexBeforeTargetStation(upStation, terminalStation));
+        var result = lines().stream()
+                .noneMatch(line -> line.compareOriginalStationIndexBeforeTargetStation(upStation, terminalStation));
     }
 
 

@@ -8,8 +8,8 @@ import subway.launcher.status.QuiteStatus;
 import subway.launcher.status.SelectChildMenuStatus;
 
 public enum MainMenu {
-    MENU_1("1","경로 조회", new SelectChildMenuStatus()),
-    MENU_Q("Q","종료", new QuiteStatus());
+    MENU_1("1", "경로 조회", new SelectChildMenuStatus()),
+    MENU_Q("Q", "종료", new QuiteStatus());
 
     private final String command;
     private final String message;
@@ -21,20 +21,20 @@ public enum MainMenu {
         this.nextStatus = nextStatus;
     }
 
-    public static MainMenu from(final String input){
+    public static MainMenu from(final String input) {
         return Arrays.stream(values())
                 .filter(mainMenu -> mainMenu.command.equals(input.trim()))
                 .findAny()
-                .orElseThrow(() -> new InvalidInputException("잘못된 입력입니다",input));
+                .orElseThrow(() -> new InvalidInputException("잘못된 입력입니다", input));
     }
 
-    public static String message(){
+    public static String message() {
         return Arrays.stream(values())
-                .map(mainMenu -> String.format("%s. %s",mainMenu.command, mainMenu.message))
+                .map(mainMenu -> String.format("%s. %s", mainMenu.command, mainMenu.message))
                 .collect(Collectors.joining("\n"));
     }
 
-    public BasicStatus getNextStatus(){
+    public BasicStatus getNextStatus() {
         return nextStatus;
     }
 }

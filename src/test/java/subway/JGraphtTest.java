@@ -6,6 +6,7 @@ import org.jgrapht.graph.WeightedMultigraph;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import subway.domain.station.Station;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -24,5 +25,25 @@ public class JGraphtTest {
         List<String> shortestPath = dijkstraShortestPath.getPath("v3", "v1").getVertexList();
 
         assertThat(shortestPath.size()).isEqualTo(3);
+    }
+
+    @Test
+    public void test(){
+        WeightedMultigraph<Station, DefaultWeightedEdge> graph = new WeightedMultigraph(DefaultWeightedEdge.class);
+
+        var a = new Station("가");
+        var b= new Station("나");
+        var c= new Station("다");
+
+        graph.addVertex(a);
+        graph.addVertex(b);
+        graph.addVertex(c);
+
+        graph.setEdgeWeight(graph.addEdge(a,b),2);
+        graph.setEdgeWeight(graph.addEdge(b,c),2);
+
+         var dijkstraShortestPath = new DijkstraShortestPath(graph);
+        List<Station> stations = dijkstraShortestPath.getPath(a,c).getVertexList();
+        System.out.println(stations);
     }
 }

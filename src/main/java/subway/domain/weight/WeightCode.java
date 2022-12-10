@@ -5,6 +5,7 @@ public enum WeightCode {
     DISTANCE("km");
 
     private final String message;
+    
     WeightCode(String message) {
         this.message = message;
     }

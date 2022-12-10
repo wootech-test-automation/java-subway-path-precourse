@@ -21,7 +21,7 @@ public class SectionRepository {
         sections.add(new Section(new Station("양재역"), new Station("양재시민의숲역"), new WeightDivision("10/3")));
     }
 
-    public static List<Section> sections(){
+    public static List<Section> sections() {
         return Collections.unmodifiableList(sections);
     }
 

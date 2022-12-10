@@ -6,7 +6,6 @@ import subway.view.InputView;
 import subway.view.OutputView;
 
 public class CalculateShortestDistance implements BasicStatus {
-
     @Override
     public BasicStatus next(SystemContext context, InputView inputView, OutputView outputView) {
         var result = context.calculateShortestByWeight(WeightCode.DISTANCE);

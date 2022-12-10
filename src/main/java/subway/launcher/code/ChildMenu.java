@@ -10,9 +10,9 @@ import subway.launcher.status.InputStationStatus;
 import subway.launcher.status.SelectMainMenuStatus;
 
 public enum ChildMenu {
-      MENU_1("1","최단 거리", new InputStationStatus(new CalculateShortestDistance())),
-      MENU_2("2","최소 시간", new InputStationStatus(new CalculateShortestTime())),
-      MENU_B("B","돌아가기", new SelectMainMenuStatus());
+    MENU_1("1", "최단 거리", new InputStationStatus(new CalculateShortestDistance())),
+    MENU_2("2", "최소 시간", new InputStationStatus(new CalculateShortestTime())),
+    MENU_B("B", "돌아가기", new SelectMainMenuStatus());
 
     private final String command;
     private final String message;
@@ -24,20 +24,20 @@ public enum ChildMenu {
         this.nextStatus = nextStatus;
     }
 
-    public static ChildMenu from(final String input){
+    public static ChildMenu from(final String input) {
         return Arrays.stream(values())
-                .filter(menu  -> menu.command.equals(input.trim()))
+                .filter(menu -> menu.command.equals(input.trim()))
                 .findAny()
-                .orElseThrow(() -> new InvalidInputException("잘못된 입력입니다",input));
+                .orElseThrow(() -> new InvalidInputException("잘못된 입력입니다", input));
     }
 
-    public static String message(){
+    public static String message() {
         return Arrays.stream(values())
-                .map(menu -> String.format("%s. %s",menu.command, menu.message))
+                .map(menu -> String.format("%s. %s", menu.command, menu.message))
                 .collect(Collectors.joining("\n"));
     }
 
-    public BasicStatus getNextStatus(){
+    public BasicStatus getNextStatus() {
         return nextStatus;
     }
 }

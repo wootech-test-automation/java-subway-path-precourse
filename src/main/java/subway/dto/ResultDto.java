@@ -5,9 +5,9 @@ import java.util.stream.Collectors;
 import subway.domain.station.Station;
 
 public class ResultDto {
-    private int distanceSum;
-    private int timeSum;
-    private List<String> stationName;
+    private final int distanceSum;
+    private final int timeSum;
+    private final List<String> stationName;
 
     public ResultDto(double distanceSum, double timeSum, List<Station> stationName) {
         this.distanceSum = (int) distanceSum;

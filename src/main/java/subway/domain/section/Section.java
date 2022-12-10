@@ -25,7 +25,8 @@ public class Section extends DefaultWeightedEdge {
     }
 
     public double getWeight(WeightCode weight) {
-        if(weight == WeightCode.DISTANCE) {
+
+        if (weight == WeightCode.DISTANCE) {
             return this.weight.getValue(WeightCode.DISTANCE);
         }
         return this.weight.getValue(WeightCode.TIME);

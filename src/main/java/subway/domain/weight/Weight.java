@@ -7,7 +7,7 @@ public class Weight {
         this.number = Integer.parseInt(input);
     }
 
-    public int value(){
+    public int value() {
         return number;
     }
 }

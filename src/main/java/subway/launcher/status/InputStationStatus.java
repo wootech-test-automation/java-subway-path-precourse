@@ -10,25 +10,42 @@ import subway.view.OutputView;
 public class InputStationStatus implements BasicStatus {
 
     private final BasicStatus nextStatus;
+
     public InputStationStatus(final BasicStatus nextStatus) {
         this.nextStatus = nextStatus;
     }
 
     @Override
     public BasicStatus next(SystemContext context, InputView inputView, OutputView outputView) {
-        var upStation = this.readStation(inputView,outputView);
-        var terminalStation = this.readStation(inputView,outputView);
 
-        context.initializeStationDivision(new StationDivision(upStation,terminalStation));
-        
+        context.initializeStationDivision(
+                new StationDivision(
+                        readUpStation(context, inputView, outputView),
+                        readDownStation(context, inputView, outputView)
+                )
+        );
         return nextStatus;
     }
 
-    private Station readStation(InputView inputView, OutputView outputView) {
-        while(true){
+    private Station readDownStation(SystemContext context, InputView inputView, OutputView outputView) {
+        while (true) {
             try {
-                return inputView.readUpStation();
-            }catch (InvalidInputException exception){
+                var station = inputView.readDownStation();
+                context.validateExistsStation(station);
+                return station;
+            } catch (InvalidInputException exception) {
+                outputView.printError(exception.getMessage());
+            }
+        }
+    }
+
+    private Station readUpStation(SystemContext context, InputView inputView, OutputView outputView) {
+        while (true) {
+            try {
+                var station = inputView.readUpStation();
+                context.validateExistsStation(station);
+                return station;
+            } catch (InvalidInputException exception) {
                 outputView.printError(exception.getMessage());
             }
         }

@@ -1,10 +1,10 @@
 package subway.view;
 
 import java.util.List;
-import subway.dto.ResultDto;
 import subway.domain.station.Station;
+import subway.dto.ResultDto;
 
-public class OutputView extends IoPrinter{
+public class OutputView extends IoPrinter {
     public void printResult(List<Station> result) {
         this.println(result);
     }
@@ -16,9 +16,11 @@ public class OutputView extends IoPrinter{
         this.info(String.format("총 소요 시간: %d분", result.getTimeSum()));
         this.info("---");
         this.info(result.getStationName());
+        this.println();
     }
 
     public void printError(String message) {
-        this.println(String.format("[ERROR] %s",message));
+        this.println(String.format("[ERROR] %s", message));
+        this.println();
     }
 }

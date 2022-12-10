@@ -1,6 +1,5 @@
 package subway.launcher;
 
-import java.util.NoSuchElementException;
 import subway.exception.InvalidInputException;
 import subway.launcher.context.SystemContext;
 import subway.launcher.status.BasicStatus;
@@ -15,20 +14,20 @@ public class SystemLauncher {
     private final OutputView outputView;
     private final SystemContext context;
 
-    public SystemLauncher(){
+    public SystemLauncher() {
         this.inputView = new InputView();
         this.outputView = new OutputView();
         this.context = new SystemContext();
     }
 
-    public void execute(){
+    public void execute() {
         BasicStatus status = new InitStatus();
-        while(status.runnable()) {
+        while (status.runnable()) {
             try {
                 status = status.next(context, inputView, outputView);
-            } catch (InvalidInputException exception){
+            } catch (InvalidInputException exception) {
                 outputView.printError(exception.getMessage());
-            }catch (NoSuchElementException exception){
+            } catch (IllegalStateException exception) {
                 outputView.printError(exception.getMessage());
                 status = new QuiteStatus();
             }

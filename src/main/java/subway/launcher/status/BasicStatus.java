@@ -6,5 +6,7 @@ import subway.view.OutputView;
 
 public interface BasicStatus {
     BasicStatus next(SystemContext context, InputView inputView, OutputView outputView);
+
     boolean runnable();
+
 }
