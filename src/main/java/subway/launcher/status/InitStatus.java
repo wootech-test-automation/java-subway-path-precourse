@@ -7,7 +7,7 @@ import subway.view.OutputView;
 public class InitStatus implements BasicStatus{
     @Override
     public BasicStatus next(SystemContext context, InputView inputView, OutputView outputView) {
-        return new QuiteStatus();
+        return new SelectMainMenuStatus();
     }
 
     @Override
