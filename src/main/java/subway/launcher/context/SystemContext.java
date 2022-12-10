@@ -25,32 +25,31 @@ public class SystemContext {
         this.stationDivision = stationDivision;
     }
 
-    public ResultDto calculateShortestDistance(WeightCode code) {
+    public ResultDto calculateShortestByWeight(WeightCode code) {
         try {
             DijkstraShortestPath dijkstraShortestPath = getDijkstraShortestPath(code);
-            var result = dijkstraShortestPath.getPath(stationDivision.getUpStation(),
-                    stationDivision.getTerminalStation());
-            return generateResultDto(result);
+            var result = dijkstraShortestPath.getPath(
+                    stationDivision.getUpStation(), stationDivision.getTerminalStation()
+            );
+            return generateResultDto(result.getEdgeList(), result.getVertexList());
         }catch (IllegalArgumentException exception){
             throw new IllegalStateException("연결할 수 없는 역입니다.");
         }
     }
 
-    private ResultDto generateResultDto(GraphPath result) {
-        List<Section> edgeList = result.getEdgeList();
+    private ResultDto generateResultDto(List<Section> edgeList, List<Station> stationList) {
         var distanceSum= edgeList.stream().mapToDouble(s -> s.getWeight(WeightCode.DISTANCE)).sum();
         var timeSum = edgeList.stream().mapToDouble(s -> s.getWeight(WeightCode.TIME)).sum();
-        return new ResultDto(distanceSum, timeSum, result.getVertexList());
+        return new ResultDto(distanceSum, timeSum,stationList);
     }
 
     private DijkstraShortestPath getDijkstraShortestPath(WeightCode code) {
         SectionRepository.sections().forEach(section -> {
             graph.addVertex(section.getFirstEdgeStation());
             graph.addVertex(section.getLastEdgeStation());
+            graph.addEdge(section.getFirstEdgeStation(), section.getLastEdgeStation(),section);
+            graph.setEdgeWeight(section.getFirstEdgeStation(),section.getLastEdgeStation(),section.getWeight(code));
         });
-        SectionRepository.sections().forEach(section -> graph.addEdge(section.getFirstEdgeStation(), section.getLastEdgeStation(), section));
-        SectionRepository.sections().forEach(section -> graph.setEdgeWeight(section.getFirstEdgeStation(),section.getLastEdgeStation(), section.getWeight(code)));
-        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
-        return dijkstraShortestPath;
+        return new DijkstraShortestPath(graph);
     }
 }
