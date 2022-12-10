@@ -27,6 +27,10 @@ public class RouteSearchController {
         Station arrivalStation = inputView.readArrivalStation();
         System.out.println(arrivalStation);
 
+        validateDifferentDepartureAndArrivalStation(departureStation, arrivalStation);
+    }
+
+    private static void validateDifferentDepartureAndArrivalStation(Station departureStation, Station arrivalStation) {
         if (departureStation == arrivalStation) {
             throw new IllegalArgumentException(
                     ExceptionMessage.INVALID_SAME_DEPARTURE_AND_ARRIVAL_STATION.getMessage());

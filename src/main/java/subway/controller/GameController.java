@@ -22,7 +22,6 @@ public class GameController {
         do {
             outputView.printMainScreen();
             mainOption = inputView.readMainOption();
-            System.out.println(mainOption);
 
             if (mainOption == MainOption.ROUTE_SEARCH) {
                 RouteSearchController routeSearchController = new RouteSearchController(inputView, outputView);
