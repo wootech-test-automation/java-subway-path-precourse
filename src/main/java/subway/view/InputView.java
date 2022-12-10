@@ -9,6 +9,7 @@ import subway.util.Util;
 
 public class InputView {
 
+
     private enum ConsoleMessage {
         INPUT_MAIN_OPTION("## 원하는 기능을 선택하세요."),
         INPUT_ROUTE_OPTION("## 원하는 기능을 선택하세요."),
@@ -34,6 +35,11 @@ public class InputView {
 
     public Station readDepartureStation() {
         System.out.println(ConsoleMessage.INPUT_DEPARTURE_STATION.message);
+        return StationRepository.findStationByName(Util.removeSpace(Console.readLine()));
+    }
+
+    public Station readArrivalStation() {
+        System.out.println(ConsoleMessage.INPUT_ARRIVAL_STATION.message);
         return StationRepository.findStationByName(Util.removeSpace(Console.readLine()));
     }
 }

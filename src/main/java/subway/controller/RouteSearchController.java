@@ -3,6 +3,7 @@ package subway.controller;
 import subway.domain.Station;
 import subway.domain.StationRepository;
 import subway.domain.option.RouteOption;
+import subway.util.message.ExceptionMessage;
 import subway.view.InputView;
 import subway.view.OutputView;
 
@@ -21,6 +22,14 @@ public class RouteSearchController {
         RouteOption routeOption = inputView.readRouteOption();
 
         Station departureStation = inputView.readDepartureStation();
+        System.out.println(departureStation);
 
+        Station arrivalStation = inputView.readArrivalStation();
+        System.out.println(arrivalStation);
+
+        if (departureStation == arrivalStation) {
+            throw new IllegalArgumentException(
+                    ExceptionMessage.INVALID_SAME_DEPARTURE_AND_ARRIVAL_STATION.getMessage());
+        }
     }
 }
