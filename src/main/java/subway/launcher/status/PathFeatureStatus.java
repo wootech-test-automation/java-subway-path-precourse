@@ -12,8 +12,8 @@ public class PathFeatureStatus extends AbstractRunnableSubwayStatus {
     @Override
     public SubwayStatus process() {
         PathFeatureKeyword pathFeatureKeyword = inputView.inputPathFeature();
-        if (pathFeatureKeyword.equals(PathFeatureKeyword.DISTANCE) ||
-                pathFeatureKeyword.equals(PathFeatureKeyword.TIME)) {
+        if (pathFeatureKeyword.equals(PathFeatureKeyword.DISTANCE)
+                || pathFeatureKeyword.equals(PathFeatureKeyword.TIME)) {
             return new InputStationStatus(context, pathFeatureKeyword);
         }
         // back
