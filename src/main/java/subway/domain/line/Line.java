@@ -24,6 +24,10 @@ public class Line {
                 .forEach(stations::add);
     }
 
+    public List<Station> getStations() {
+        return stations;
+    }
+
     @Override
     public String toString() {
         return "Line{" +

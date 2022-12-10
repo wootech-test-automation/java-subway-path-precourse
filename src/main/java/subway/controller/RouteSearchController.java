@@ -27,6 +27,7 @@ public class RouteSearchController {
         System.out.println(arrivalStation);
 
         validateDifferentDepartureAndArrivalStation(departureStation, arrivalStation);
+
     }
 
     private static void validateDifferentDepartureAndArrivalStation(Station departureStation, Station arrivalStation) {

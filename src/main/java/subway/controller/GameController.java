@@ -1,5 +1,6 @@
 package subway.controller;
 
+import subway.domain.DistanceRepository;
 import subway.domain.line.LineRepository;
 import subway.domain.station.StationRepository;
 import subway.domain.option.MainOption;
@@ -19,8 +20,6 @@ public class GameController {
     public void play() {
 
         InitialSettingController.initialize();
-        System.out.println(StationRepository.stations());
-        System.out.println(LineRepository.lines());
 
         do {
             outputView.printMainScreen();
