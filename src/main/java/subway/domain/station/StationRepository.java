@@ -1,9 +1,10 @@
-package subway.domain;
+package subway.domain.station;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import subway.util.message.ExceptionMessage;
 
 public class StationRepository {
     private static final List<Station> stations = new ArrayList<>();
@@ -22,5 +23,12 @@ public class StationRepository {
 
     public static void deleteAll() {
         stations.clear();
+    }
+
+    public static Station findStationByName(String name) {
+        return stations.stream()
+                .filter(station -> station.getName().equals(name))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException(ExceptionMessage.NO_SUCH_STATION.getMessage()));
     }
 }
