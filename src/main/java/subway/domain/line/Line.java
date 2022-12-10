@@ -5,7 +5,6 @@ import subway.domain.station.Station;
 
 public class Line {
     private final String name;
-    private final List<Station> stations;
 
     public Line(String name, List<Station> stations) {
         this.name = name;
@@ -21,7 +20,4 @@ public class Line {
     }
 
     // 추가 기능 구현
-    public boolean compareOriginalStationIndexBeforeTargetStation(Station originalStation, Station targetStation) {
-        return stations.indexOf(originalStation) < stations.indexOf(targetStation);
-    }
 }

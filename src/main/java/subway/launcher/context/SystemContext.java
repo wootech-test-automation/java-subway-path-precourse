@@ -3,7 +3,6 @@ package subway.launcher.context;
 import java.util.List;
 import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import org.jgrapht.graph.WeightedMultigraph;
-import subway.domain.line.LineRepository;
 import subway.domain.section.Section;
 import subway.domain.section.SectionRepository;
 import subway.domain.station.Station;
@@ -18,8 +17,6 @@ public class SystemContext {
     private StationDivision stationDivision;
 
     public void initializeStationDivision(StationDivision stationDivision) {
-
-        LineRepository.existsSameLine(stationDivision.getUpStation(), stationDivision.getTerminalStation());
         this.stationDivision = stationDivision;
     }
 

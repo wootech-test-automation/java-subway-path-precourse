@@ -36,11 +36,4 @@ public class LineRepository {
     public static void deleteAll() {
         lines.clear();
     }
-
-    public static void existsSameLine(Station upStation, Station terminalStation) {
-        var result = lines().stream()
-                .noneMatch(line -> line.compareOriginalStationIndexBeforeTargetStation(upStation, terminalStation));
-    }
-
-
 }
