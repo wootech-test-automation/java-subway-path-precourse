@@ -28,10 +28,10 @@ public class PathResult {
 
     @Override
     public String toString() {
-        return "PathResult{" +
-                "shortestPath=" + shortestPath +
-                ", totalDistance=" + totalDistance +
-                ", totalTime=" + totalTime +
-                '}';
+        return "PathResult{"
+                + "shortestPath=" + shortestPath
+                + ", totalDistance=" + totalDistance
+                + ", totalTime=" + totalTime
+                + '}';
     }
 }
