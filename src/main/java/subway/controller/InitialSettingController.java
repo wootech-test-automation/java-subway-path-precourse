@@ -1,9 +1,7 @@
 package subway.controller;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import subway.domain.DistanceRepository;
 import subway.domain.TimeRepository;
 import subway.domain.line.Line;
@@ -65,13 +63,13 @@ public class InitialSettingController {
         for (Station station : StationRepository.stations()) {
             TimeRepository.addStation(station);
         }
-        TimeRepository.addDistance(station("교대역"), station("강남역"), 3);
-        TimeRepository.addDistance(station("강남역"), station("역삼역"), 3);
-        TimeRepository.addDistance(station("교대역"), station("남부터미널역"), 2);
-        TimeRepository.addDistance(station("남부터미널역"), station("양재역"), 5);
-        TimeRepository.addDistance(station("양재역"), station("매봉역"), 1);
-        TimeRepository.addDistance(station("강남역"), station("양재역"), 8);
-        TimeRepository.addDistance(station("양재역"), station("양재시민의숲역"), 3);
+        TimeRepository.addTime(station("교대역"), station("강남역"), 3);
+        TimeRepository.addTime(station("강남역"), station("역삼역"), 3);
+        TimeRepository.addTime(station("교대역"), station("남부터미널역"), 2);
+        TimeRepository.addTime(station("남부터미널역"), station("양재역"), 5);
+        TimeRepository.addTime(station("양재역"), station("매봉역"), 1);
+        TimeRepository.addTime(station("강남역"), station("양재역"), 8);
+        TimeRepository.addTime(station("양재역"), station("양재시민의숲역"), 3);
     }
 
     private static Station station(String name) {

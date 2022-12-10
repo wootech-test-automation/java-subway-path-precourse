@@ -1,5 +1,6 @@
 package subway.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import subway.domain.DistanceRepository;
@@ -32,12 +33,19 @@ public class RouteSearchController {
 
         validateDifferentDepartureAndArrivalStation(departureStation, arrivalStation);
 
-        if (routeOption == RouteOption.SHORTEST_DISTANCE) {
-            outputView.printQueryResult(DistanceRepository.getShortestDistance(departureStation, arrivalStation));
+        try {
+            List<String> optimalRoute = new ArrayList<>();
+            if (routeOption == RouteOption.SHORTEST_DISTANCE) {
+                optimalRoute = DistanceRepository.getShortestDistance(departureStation, arrivalStation);
+            }
+            if (routeOption == RouteOption.SHORTEST_TIME) {
+                optimalRoute = TimeRepository.getShortestTime(departureStation, arrivalStation);
+            }
+            System.out.println(optimalRoute);
+        } catch (Exception exception) {
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_NO_CONNECTION_BETWEEN_STATIONS.getMessage());
         }
-        if (routeOption == RouteOption.SHORTEST_TIME) {
-            outputView.printQueryResult(TimeRepository.getShortestTime(departureStation, arrivalStation));
-        }
+
     }
 
     private static void validateDifferentDepartureAndArrivalStation(Station departureStation, Station arrivalStation) {

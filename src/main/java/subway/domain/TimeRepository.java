@@ -15,7 +15,7 @@ public class TimeRepository {
         timeGraph.addVertex(station.getName());
     }
 
-    public static void addDistance(Station station1, Station station2, int time) {
+    public static void addTime(Station station1, Station station2, int time) {
         timeGraph.setEdgeWeight(timeGraph.addEdge(station1.getName(), station2.getName()), time);
     }
 
@@ -23,4 +23,7 @@ public class TimeRepository {
         DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(timeGraph);
         return dijkstraShortestPath.getPath(departure.getName(), arrival.getName()).getVertexList();
     }
+
+
+
 }
