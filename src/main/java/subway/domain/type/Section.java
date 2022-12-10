@@ -35,10 +35,6 @@ public class Section {
         return Objects.hash(line, distance, time);
     }
 
-    public Line getLine() {
-        return line;
-    }
-
     public Station getSource() {
         return line.getSource();
     }
