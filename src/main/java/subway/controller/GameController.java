@@ -1,7 +1,7 @@
 package subway.controller;
 
+import subway.domain.station.StationRepository;
 import subway.domain.option.MainOption;
-import subway.domain.option.RouteOption;
 import subway.view.InputView;
 import subway.view.OutputView;
 
@@ -18,6 +18,7 @@ public class GameController {
     public void play() {
 
         InitialSettingController.initialize();
+        System.out.println(StationRepository.stations());
 
         do {
             outputView.printMainScreen();

@@ -1,7 +1,6 @@
 package subway.controller;
 
-import subway.domain.Station;
-import subway.domain.StationRepository;
+import subway.domain.station.Station;
 import subway.domain.option.RouteOption;
 import subway.util.message.ExceptionMessage;
 import subway.view.InputView;

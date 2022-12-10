@@ -1,8 +1,8 @@
 package subway.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import subway.domain.Station;
-import subway.domain.StationRepository;
+import subway.domain.station.Station;
+import subway.domain.station.StationRepository;
 import subway.domain.option.MainOption;
 import subway.domain.option.RouteOption;
 import subway.util.Util;

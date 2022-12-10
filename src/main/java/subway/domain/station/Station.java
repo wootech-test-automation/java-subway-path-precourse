@@ -1,7 +1,9 @@
-package subway.domain;
+package subway.domain.station;
 
 import java.util.ArrayList;
 import java.util.List;
+import subway.domain.line.Line;
+import subway.domain.line.LineRepository;
 
 public class Station {
     private String name;

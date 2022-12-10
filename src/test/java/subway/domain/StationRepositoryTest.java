@@ -2,7 +2,6 @@ package subway.domain;
 
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatCode;
-import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -10,6 +9,7 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import subway.controller.InitialSettingController;
+import subway.domain.station.StationRepository;
 import subway.util.message.ExceptionMessage;
 
 class StationRepositoryTest {

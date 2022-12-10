@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import subway.domain.Line;
-import subway.domain.LineRepository;
-import subway.domain.Station;
-import subway.domain.StationRepository;
+import subway.domain.line.Line;
+import subway.domain.line.LineRepository;
+import subway.domain.station.Station;
+import subway.domain.station.StationRepository;
 
 public class InitialSettingController {
 
