@@ -1,6 +1,8 @@
 package subway.view;
 
 import java.util.Scanner;
+import subway.domain.type.MainMenu;
+import subway.domain.type.RouteMenu;
 
 public class InputView {
     private final Scanner scanner;
@@ -12,14 +14,14 @@ public class InputView {
         return scanner.nextLine();
     }
 
-    public String readMainMenu() {
+    public MainMenu readMainMenu() {
         String input = readLine();
-        return input;
+        return MainMenu.fromCommand(input);
     }
 
-    public String readRouteMenu() {
+    public RouteMenu readRouteMenu() {
         String input = readLine();
-        return input;
+        return RouteMenu.fromCommand(input);
     }
 
     public String readStationName() {
