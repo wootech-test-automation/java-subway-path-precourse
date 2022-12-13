@@ -6,6 +6,7 @@ import subway.domain.type.RouteMenu;
 
 public class InputView {
     private final Scanner scanner;
+
     public InputView(Scanner scanner) {
         this.scanner = scanner;
     }

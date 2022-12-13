@@ -45,7 +45,7 @@ public class OutputView {
         info("총 소요 시간: " + pathFindResult.getTotalTime() + "분");
         info("---");
         pathFindResult.getPath()
-                        .forEach(stationName -> info(stationName));
+                .forEach(stationName -> info(stationName));
     }
 
     public static void printError(String e) {

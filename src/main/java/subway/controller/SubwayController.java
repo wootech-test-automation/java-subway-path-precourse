@@ -53,6 +53,7 @@ public class SubwayController {
         OutputView.printInputStationStart();
         return inputView.readStationName();
     }
+
     private String readDestinationStationName() {
         OutputView.printInputStationEnd();
         return inputView.readStationName();

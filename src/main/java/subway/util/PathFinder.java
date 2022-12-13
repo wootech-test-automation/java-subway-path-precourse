@@ -8,7 +8,8 @@ import subway.domain.type.PathFindResult;
 import subway.domain.type.Route;
 
 public class PathFinder {
-    public static List<String> dijkstra(boolean wantShortest, List<Route> routes, String startStation, String destinationStation) {
+    public static List<String> dijkstra(boolean wantShortest, List<Route> routes, String startStation,
+                                        String destinationStation) {
         WeightedMultigraph<String, DefaultWeightedEdge> graph = new WeightedMultigraph(DefaultWeightedEdge.class);
 
         for (Route route : routes) {

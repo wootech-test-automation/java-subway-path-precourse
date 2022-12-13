@@ -56,13 +56,15 @@ public class SubwaySystem {
 
     public PathFindResult shortestRoute(String startStationName, String destinationStationName) {
         validateStationsName(startStationName, destinationStationName);
-        List<String> paths = PathFinder.dijkstra(true, RouteRepository.routes(), startStationName, destinationStationName);
+        List<String> paths = PathFinder.dijkstra(true, RouteRepository.routes(), startStationName,
+                destinationStationName);
         return checkAllPaths(paths);
     }
 
     public PathFindResult fastestRoute(String startStationName, String destinationStationName) {
         validateStationsName(startStationName, destinationStationName);
-        List<String> paths = PathFinder.dijkstra(false, RouteRepository.routes(), startStationName, destinationStationName);
+        List<String> paths = PathFinder.dijkstra(false, RouteRepository.routes(), startStationName,
+                destinationStationName);
         return checkAllPaths(paths);
     }
 
@@ -78,7 +80,7 @@ public class SubwaySystem {
             String stationName1 = paths.get(i);
             String stationName2 = paths.get(i + 1);
             Route route = RouteRepository.findByStationsName(stationName1, stationName2);
-            if (route!= null) {
+            if (route != null) {
                 result.addPrice(route.getDistance(), route.getTime());
             }
         }
