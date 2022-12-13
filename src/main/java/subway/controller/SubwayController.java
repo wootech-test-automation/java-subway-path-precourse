@@ -1,9 +1,12 @@
 package subway.controller;
 
+import java.util.List;
 import java.util.Scanner;
 import subway.domain.SubwaySystem;
 import subway.domain.type.MainMenu;
+import subway.domain.type.PathFindResult;
 import subway.domain.type.RouteMenu;
+import subway.domain.type.Station;
 import subway.view.InputView;
 import subway.view.OutputView;
 
@@ -16,8 +19,12 @@ public class SubwayController {
     }
 
     public void system() {
-        while (mainDisplay() != MainMenu.QUIT) {
-            routeDisplay();
+        try {
+            while (mainDisplay() != MainMenu.QUIT) {
+                routeDisplay();
+            }
+        } catch (IllegalArgumentException e) {
+            OutputView.printError(e.getMessage());
         }
     }
 
@@ -31,11 +38,23 @@ public class SubwayController {
         OutputView.printRouteMenu();
         RouteMenu menu = inputView.readRouteMenu();
         // 경로 탐색 진행
+        PathFindResult pathFindResult;
         if (menu.isShortestCommand()) {
-            subwaySystem.shortestRoute();
+            pathFindResult = subwaySystem.shortestRoute(readStartStationName(), readDestinationStationName());
+            OutputView.printResult(pathFindResult);
         }
         if (menu.isFastestCommand()) {
-            subwaySystem.fastestRoute();
+            pathFindResult = subwaySystem.fastestRoute(readStartStationName(), readDestinationStationName());
+            OutputView.printResult(pathFindResult);
         }
+    }
+
+    private String readStartStationName() {
+        OutputView.printInputStationStart();
+        return inputView.readStationName();
+    }
+    private String readDestinationStationName() {
+        OutputView.printInputStationEnd();
+        return inputView.readStationName();
     }
 }
