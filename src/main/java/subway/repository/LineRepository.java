@@ -17,6 +17,10 @@ public class LineRepository {
         lines.add(line);
     }
 
+    public static void addAll(List<Line> allLines) {
+        lines.addAll(allLines);
+    }
+
     public static boolean deleteLineByName(String name) {
         return lines.removeIf(line -> Objects.equals(line.getName(), name));
     }
