@@ -4,7 +4,6 @@ import java.util.List;
 import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.WeightedMultigraph;
-import subway.domain.type.PathFindResult;
 import subway.domain.type.Route;
 
 public class PathFinder {

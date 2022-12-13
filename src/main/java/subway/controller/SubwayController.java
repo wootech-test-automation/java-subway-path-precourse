@@ -1,12 +1,10 @@
 package subway.controller;
 
-import java.util.List;
 import java.util.Scanner;
 import subway.domain.SubwaySystem;
 import subway.domain.type.MainMenu;
 import subway.domain.type.PathFindResult;
 import subway.domain.type.RouteMenu;
-import subway.domain.type.Station;
 import subway.view.InputView;
 import subway.view.OutputView;
 
