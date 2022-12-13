@@ -38,6 +38,10 @@ public class SubwayController {
         OutputView.printRouteMenu();
         RouteMenu menu = inputView.readRouteMenu();
         // 경로 탐색 진행
+        runPathFind(menu);
+    }
+
+    private void runPathFind(RouteMenu menu) {
         PathFindResult pathFindResult;
         if (menu.isShortestCommand()) {
             pathFindResult = subwaySystem.shortestRoute(readStartStationName(), readDestinationStationName());
