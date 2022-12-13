@@ -1,8 +1,10 @@
 package subway.view;
 
+import subway.domain.type.PathFindResult;
+
 public class OutputView {
-    private static final String INFO = "[INFO]";
-    private static final String ERROR = "[ERROR]";
+    private static final String INFO = "[INFO] ";
+    private static final String ERROR = "[ERROR] ";
 
     private static void info(String msg) {
         System.out.println(INFO + msg);
@@ -37,14 +39,13 @@ public class OutputView {
         System.out.println("## 도착역을 입력하세요.");
     }
 
-    public static void printResult() {
+    public static void printResult(PathFindResult pathFindResult) {
         info("---");
-        info("총 거리 : km");
-        info("총 소요 시간: 분");
+        info("총 거리: " + pathFindResult.getTotalDistance() + "km");
+        info("총 소요 시간: " + pathFindResult.getTotalTime() + "분");
         info("---");
-        info("교대역");
-        info("강남역");
-        info("양재역");
+        pathFindResult.getPath()
+                        .forEach(stationName -> info(stationName));
     }
 
     public static void printError(String e) {
