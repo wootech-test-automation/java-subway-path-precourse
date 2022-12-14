@@ -1,4 +1,4 @@
-package subway.domain;
+package subway.domain.type;
 
 public class Line {
     private String name;
@@ -11,5 +11,8 @@ public class Line {
         return name;
     }
 
-    // 추가 기능 구현
+    @Override
+    public String toString() {
+        return name;
+    }
 }
